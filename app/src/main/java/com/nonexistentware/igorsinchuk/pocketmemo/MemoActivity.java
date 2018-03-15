@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nonexistentware.igorsinchuk.pocketmemo.database.TaskContract;
 import com.nonexistentware.igorsinchuk.pocketmemo.database.TaskDbHelper;
@@ -27,7 +28,7 @@ public class MemoActivity extends AppCompatActivity {
     private TaskDbHelper mHelper;
     private ListView mTaskListView;
     private ArrayAdapter<String> mAdapter;
-
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,8 @@ public class MemoActivity extends AppCompatActivity {
 
         mHelper = new TaskDbHelper(this);
         mTaskListView = (ListView) findViewById(R.id.todoList);
+        textView = (TextView) findViewById(R.id.textView);
+        textView.setVisibility(View.VISIBLE);
 
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +60,8 @@ public class MemoActivity extends AppCompatActivity {
                                 db.insertWithOnConflict(TaskContract.TaskEntry.TABLE, null, values,SQLiteDatabase.CONFLICT_REPLACE);
                                 db.close();
                                 updateUI();
+                                textView.setVisibility(View.INVISIBLE);
+                                positiveToast();
                             }
                         })
                         .setNegativeButton("Cancel", null)
@@ -64,6 +69,7 @@ public class MemoActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
+
     }
 
     public void deleteTask(View view) {
@@ -74,6 +80,7 @@ public class MemoActivity extends AppCompatActivity {
         db.delete(TaskContract.TaskEntry.TABLE,
                 TaskContract.TaskEntry.COL_TASK_TITLE + " = ?",
                 new String[]{task});
+        Toast.makeText(this, "Task was successfully deleted", Toast.LENGTH_SHORT).show();
         db.close();
         updateUI();
     }
@@ -99,6 +106,10 @@ public class MemoActivity extends AppCompatActivity {
         }
         cursor.close();
         db.close();
+    }
+
+    public void positiveToast() {
+        Toast.makeText(this, "Task was successfully added", Toast.LENGTH_SHORT).show();
     }
 
 }
