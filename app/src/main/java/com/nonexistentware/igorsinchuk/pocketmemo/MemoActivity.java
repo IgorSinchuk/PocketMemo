@@ -33,8 +33,6 @@ public class MemoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memo);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         mHelper = new TaskDbHelper(this);
         mTaskListView = (ListView) findViewById(R.id.todoList);
