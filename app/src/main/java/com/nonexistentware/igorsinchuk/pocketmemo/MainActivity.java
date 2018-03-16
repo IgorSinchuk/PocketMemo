@@ -3,12 +3,14 @@ package com.nonexistentware.igorsinchuk.pocketmemo;
 import android.Manifest;
 import android.app.KeyguardManager;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.AnimationDrawable;
 import android.hardware.fingerprint.FingerprintManager;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,11 +35,19 @@ public class MainActivity extends AppCompatActivity {
     private static final String KEY_NAME = "Pocket";
     private Cipher cipher;
     private TextView textView;
+    private RelativeLayout mainLayout;
+    private AnimationDrawable animationDrawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //animation
+        mainLayout = (RelativeLayout) findViewById(R.id.mainLayout);
+        animationDrawable = (AnimationDrawable) mainLayout.getBackground();
+        animationDrawable.setExitFadeDuration(4500);
+        animationDrawable.start();
 
 
         KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
