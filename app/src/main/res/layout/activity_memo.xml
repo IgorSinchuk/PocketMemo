@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#273746"
+    android:background="#373737"
     android:screenOrientation="portrait"
     tools:context="com.nonexistentware.igorsinchuk.pocketmemo.MemoActivity">
 
@@ -12,21 +12,22 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
+        android:src="@drawable/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
-    <TextView
-        android:layout_gravity="center"
-        android:id="@+id/textView"
-        android:text="No memo's"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:textColor="#ffffff"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <!--<TextView-->
+        <!--android:layout_gravity="center"-->
+        <!--android:id="@+id/textView"-->
+        <!--android:text="No memo's"-->
+        <!--android:gravity="center"-->
+        <!--android:textSize="25sp"-->
+        <!--android:textColor="#ffffff"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content" />-->
 
 
 </android.support.design.widget.CoordinatorLayout>
