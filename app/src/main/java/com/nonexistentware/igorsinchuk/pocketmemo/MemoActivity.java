@@ -38,7 +38,8 @@ public class MemoActivity extends AppCompatActivity {
         mHelper = new TaskDbHelper(this);
         mTaskListView = (ListView) findViewById(R.id.todoList);
         textView = (TextView) findViewById(R.id.textView);
-        textView.setVisibility(View.VISIBLE);
+
+        updateUI();
 
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +61,6 @@ public class MemoActivity extends AppCompatActivity {
                                 db.insertWithOnConflict(TaskContract.TaskEntry.TABLE, null, values,SQLiteDatabase.CONFLICT_REPLACE);
                                 db.close();
                                 updateUI();
-                                textView.setVisibility(View.INVISIBLE);
                                 positiveToast();
                             }
                         })
