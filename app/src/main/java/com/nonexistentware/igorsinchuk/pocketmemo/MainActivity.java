@@ -29,7 +29,11 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
+import es.dmoral.toasty.Toasty;
+
 public class MainActivity extends AppCompatActivity {
+
+    //bubble animation
 
     private KeyStore keyStore;
     private static final String KEY_NAME = "Pocket";
@@ -44,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //animation
-        mainLayout = (RelativeLayout) findViewById(R.id.mainLayout);
-        animationDrawable = (AnimationDrawable) mainLayout.getBackground();
-        animationDrawable.setExitFadeDuration(4500);
-        animationDrawable.start();
+//        mainLayout = (RelativeLayout) findViewById(R.id.mainLayout);
+//        animationDrawable = (AnimationDrawable) mainLayout.getBackground();
+//        animationDrawable.setExitFadeDuration(4500);
+//        animationDrawable.start();
 
 
         KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
@@ -58,13 +62,13 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         if (!fingerprintManager.isHardwareDetected())
-            Toast.makeText(this, "Fingerprint authentication permission not enable", Toast.LENGTH_SHORT).show();
+            Toasty.error(this, "Fingerprint authentication permission not enable", Toast.LENGTH_SHORT).show();
         else {
             if (!fingerprintManager.hasEnrolledFingerprints())
-                Toast.makeText(this, "Register at least one fingerprint in Settings", Toast.LENGTH_SHORT).show();
+                Toasty.info(this, "Register at least one fingerprint in Settings", Toast.LENGTH_SHORT).show();
             else {
                 if (!keyguardManager.isKeyguardSecure())
-                    Toast.makeText(this, "Lock screen security not enabled in Settings", Toast.LENGTH_SHORT).show();
+                    Toasty.info(this, "Lock screen security not enabled in Settings", Toast.LENGTH_SHORT).show();
                 else
                     genKey();
 

@@ -4,10 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/animation"
+    android:background="#373737"
     android:screenOrientation="portrait"
     android:id="@+id/mainLayout"
     tools:context="com.nonexistentware.igorsinchuk.pocketmemo.MainActivity">
+    <!--android:background="@drawable/animation" -->
+
+    <!--<com.github.glomadrian.grav.GravView-->
+        <!--android:id="@+id/grav"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--app:colorGenerator="com.github.glomadrian.grav.generator.paint.ArrayColorGenerator"-->
+        <!--app:array_colors="@array/bubble"-->
+        <!--app:pointGenerator="com.github.glomadrian.grav.generator.point.RegularPointGenerator"-->
+        <!--app:regular_cell_size="300"-->
+        <!--app:regular_variance="200"-->
+        <!--app:gravGenerator="com.github.glomadrian.grav.generator.grav.BallGenerator"-->
+        <!--app:ball_from_size="10dp"-->
+        <!--app:ball_to_size="20dp"-->
+        <!--app:animationGenerators="@array/BubbleAnimations"-->
+        <!--app:side_to_side_min_duration="10000"-->
+        <!--app:side_to_side_max_duration="10000"-->
+        <!--app:side_to_side_direction="leftToRight"-->
+        <!--app:shake_direction="vertical"-->
+        <!--app:shake_min_duration="10000"-->
+        <!--app:shake_max_duration="20000"-->
+        <!--app:shake_variance="500dp"-->
+        <!--/>-->
 
     <ImageView
         android:id="@+id/imageFinger"
@@ -20,7 +44,7 @@
         android:layout_below="@id/imageFinger"
         android:textColor="#F5F5F5"
         android:textSize="20sp"
-        android:text="Please place your fingertip on the scanner to verify your identity"
+        android:text="Place your finger on the scanner to proceed"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:layout_width="wrap_content"

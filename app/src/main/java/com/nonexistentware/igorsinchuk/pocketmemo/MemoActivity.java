@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +23,11 @@ import com.nonexistentware.igorsinchuk.pocketmemo.database.TaskDbHelper;
 
 import java.util.ArrayList;
 
+import es.dmoral.toasty.Toasty;
+
 public class MemoActivity extends AppCompatActivity {
+
+    private ImageView fab;
 
     private static final String TAG = "MemoActivity";
     private TaskDbHelper mHelper;
@@ -37,11 +42,10 @@ public class MemoActivity extends AppCompatActivity {
 
         mHelper = new TaskDbHelper(this);
         mTaskListView = (ListView) findViewById(R.id.todoList);
-        textView = (TextView) findViewById(R.id.textView);
 
         updateUI();
 
-        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (ImageView) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View item) {
@@ -49,7 +53,7 @@ public class MemoActivity extends AppCompatActivity {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(MemoActivity.this);
                 alertDialog.setTitle("New task");
                 alertDialog
-                        .setMessage("What do you want to do next?")
+//                        .setMessage("What do you want to do next?")
                         .setView(taskEditText)
                         .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                             @Override
@@ -80,7 +84,7 @@ public class MemoActivity extends AppCompatActivity {
         db.delete(TaskContract.TaskEntry.TABLE,
                 TaskContract.TaskEntry.COL_TASK_TITLE + " = ?",
                 new String[]{task});
-        Toast.makeText(this, "Task was successfully deleted", Toast.LENGTH_SHORT).show();
+        Toasty.success(this, "Task was successfully deleted", Toast.LENGTH_SHORT).show();
         db.close();
         updateUI();
     }
@@ -109,7 +113,7 @@ public class MemoActivity extends AppCompatActivity {
     }
 
     public void positiveToast() {
-        Toast.makeText(this, "Task was successfully added", Toast.LENGTH_SHORT).show();
+        Toasty.success(this, "Task was successfully added", Toast.LENGTH_SHORT).show();
     }
 
 }
