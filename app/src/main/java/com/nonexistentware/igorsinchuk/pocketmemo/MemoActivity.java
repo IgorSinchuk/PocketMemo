@@ -10,6 +10,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -84,7 +86,7 @@ public class MemoActivity extends AppCompatActivity {
         db.delete(TaskContract.TaskEntry.TABLE,
                 TaskContract.TaskEntry.COL_TASK_TITLE + " = ?",
                 new String[]{task});
-        Toasty.success(this, "Task was successfully deleted", Toast.LENGTH_SHORT).show();
+//        Toasty.success(this, "Task was successfully deleted", Toast.LENGTH_SHORT).show();
         db.close();
         updateUI();
     }
@@ -113,7 +115,17 @@ public class MemoActivity extends AppCompatActivity {
     }
 
     public void positiveToast() {
-        Toasty.success(this, "Task was successfully added", Toast.LENGTH_SHORT).show();
+//        Toasty.success(this, "Task was successfully added", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            switch (event.getKeyCode()) {
+                case KeyEvent.KEYCODE_BACK:
+                    return true;
+            }
+        }
+        return super.dispatchKeyEvent(event);
+    }
 }

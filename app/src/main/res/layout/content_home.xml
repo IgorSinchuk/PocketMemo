@@ -11,6 +11,8 @@
     tools:showIn="@layout/activity_memo">
 
     <ListView
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="12dp"
         android:id="@+id/todoList"
         android:layout_width="wrap_content"
