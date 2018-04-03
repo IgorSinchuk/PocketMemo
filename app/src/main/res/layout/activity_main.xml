@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="#373737"
     android:screenOrientation="portrait"
+    android:orientation="vertical"
     android:id="@+id/mainLayout"
     tools:context="com.nonexistentware.igorsinchuk.pocketmemo.MainActivity">
     <!--android:background="@drawable/animation" -->
